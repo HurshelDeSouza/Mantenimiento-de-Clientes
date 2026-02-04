@@ -180,14 +180,13 @@ const ClientForm = () => {
           nombre: formData.nombre.trim(),
           apellidos: formData.apellidos.trim(),
           identificacion: formData.identificacion.trim(),
-          telefonoCelular: formData.telefonoCelular.trim(),
-          Celular: formData.telefonoCelular.trim(),
+          celular: formData.telefonoCelular.trim(),
           otroTelefono: formData.otroTelefono.trim(),
           direccion: formData.direccion.trim(),
-          fNacimiento: formData.fNacimiento ? formData.fNacimiento.format('YYYY-MM-DD') : null,
-          fAfiliacion: formData.fAfiliacion ? formData.fAfiliacion.format('YYYY-MM-DD') : null,
+          fNacimiento: formData.fNacimiento ? formData.fNacimiento.toISOString() : null,
+          fAfiliacion: formData.fAfiliacion ? formData.fAfiliacion.toISOString() : null,
           sexo: formData.sexo,
-          resenaPersonal: formData.resenaPersonal.trim(),
+          resennaPersonal: formData.resenaPersonal.trim(),
           imagen: formData.imagen || '',
           interesFK: formData.interesFK,
           usuarioId: user?.userid || '',
@@ -198,7 +197,7 @@ const ClientForm = () => {
         await updateClient(payload);
         showSuccess('Cliente actualizado correctamente');
       } else {
-        const result = await createClient(payload);
+        await createClient(payload);
         showSuccess('Cliente creado correctamente');
       }
       navigate('/clientes');
