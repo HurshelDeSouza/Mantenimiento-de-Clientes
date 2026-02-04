@@ -198,9 +198,7 @@ const ClientForm = () => {
         await updateClient(payload);
         showSuccess('Cliente actualizado correctamente');
       } else {
-        console.log('Enviando payload crear:', JSON.stringify(payload, null, 2));
         const result = await createClient(payload);
-        console.log('Resultado crear:', result);
         showSuccess('Cliente creado correctamente');
       }
       navigate('/clientes');
